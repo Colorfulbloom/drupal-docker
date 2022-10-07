@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  drupal:
+    build: .
+    ports:
+      - '8082:80'
+    volumes:
+      -  ./web/modules:/var/www/web/modules
+      -  ./web/profiles:/var/www/web/profiles
+      -  ./web/themes:/var/www/web/themes
+      -  ./web/sites:/var/www/web/sites
+      -  ./web/libraries:/var/www/web/libraries
+    restart: always
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: fanan
+      MYSQL_DATABASE: fantasyanvil
+      MYSQL_PASSWORD: w3b@pp!
+      MYSQL_ROOT_PASSWORD: A285fbed0d!
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+volumes:
+  drupal_modules:
+  drupal_profiles:
+  drupal_themes:
+  drupal_sites:
+  drupal_libraries:
+  db_data:
