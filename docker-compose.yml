@@ -6,6 +6,7 @@ services:
     ports:
       - '8082:80'
     volumes:
+      -  ./web/core:/var/www/web/core
       -  ./web/modules:/var/www/web/modules
       -  ./web/profiles:/var/www/web/profiles
       -  ./web/themes:/var/www/web/themes
@@ -15,8 +16,8 @@ services:
   mysql:
     image: mysql:latest
     environment:
-      MYSQL_USER: fanan
-      MYSQL_DATABASE: fantasyanvil
+      MYSQL_USER: dbadmin
+      MYSQL_DATABASE: drupal
       MYSQL_PASSWORD: w3b@pp!
       MYSQL_ROOT_PASSWORD: A285fbed0d!
     volumes:
